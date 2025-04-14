@@ -1,7 +1,7 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
 import { EventPattern } from '@nestjs/microservices';
-
+import { STORIES_CREATED_EVENT } from './constants';
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
@@ -11,7 +11,7 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @EventPattern('test')
+  @EventPattern(STORIES_CREATED_EVENT)
   test(...data: Array<any>) {
     console.log(data);
   }
