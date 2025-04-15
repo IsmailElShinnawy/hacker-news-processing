@@ -1,12 +1,13 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Story } from './story.entity';
 
 @Entity()
 export class Mention {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
-  storyId: number;
+  @ManyToOne(() => Story)
+  story: Story;
 
   @Column()
   keyword: string;

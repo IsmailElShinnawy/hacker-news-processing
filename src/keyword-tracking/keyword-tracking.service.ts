@@ -40,7 +40,11 @@ export class KeywordTrackingService {
 
     const mentions = results.map((r) =>
       this.mentionRepository.create({
-        ...r,
+        count: r.count,
+        keyword: r.keyword,
+        story: {
+          id: r.storyId,
+        },
       }),
     );
 
